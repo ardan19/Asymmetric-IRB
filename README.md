@@ -12,7 +12,8 @@ The physical underlay is structured to separate East-West (server-to-server) and
 * **Border Leaf Layer:** 2x Dedicated Border switches (`border1`, `border2`) handling ingress/egress traffic to the external network (`external-sw`).
 
 ## Physical Topology
-<img width="3693" height="3813" alt="image" src="https://github.com/user-attachments/assets/1d00770f-9801-42e9-b02f-481a7a6f4714" />
+<img width="3693" height="3813" alt="image" src="https://github.com/user-attachments/assets/e8a6682d-c7c5-4f59-856a-8e0860f7a191" />
+
 
 ## Traffic Flow
 ### 1. Traffic Flow Host-A to Host-B
