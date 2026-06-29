@@ -18,7 +18,15 @@ The physical underlay is structured to separate East-West (server-to-server) and
 ## Traffic Flow
 ### 1. Traffic Flow Host-A to Host-B
 <img width="3609" height="1986" alt="image" src="https://github.com/user-attachments/assets/3a3e70d8-7c72-4014-808c-26bb88442d6c" />
-
+#### Workflow
+Host-A and Host-B are in the different VLAN but are located across different leafs.
+1. Host-A makes a LACP hash decision and forwards traffic to leaf1.
+2. leaf1 does a layer 2 lookup and has the MAC address for Host-B, leaf1 performs routing from VLAN10 to VLAN20 and found Host B is on the other side of the fabric and associated with L2 VNI 1020.
+4. leaf1 performs VXLAN encapsulation packet out VNI1020.
+5. leaf1 does hashing based outer 5-tuple using underlay route through spine1->leaf4.
+6. leaf3 or leaf4 receive the packet in and performs VXLAN decapsulation packet.
+7. leaf3 or leaf4 does not performs any routing and has the MAC address for Host-B.
+8. Finally, leaf3 or leaf4 does bridging the packet to physical port connected to the Host-B. 
 
 ### 2. Traffic Flow Host-A to Host-C
 <img width="2151" height="4113" alt="image" src="https://github.com/user-attachments/assets/952b5758-f933-4077-af76-78e8ad5c6002" />
@@ -29,7 +37,8 @@ The physical underlay is structured to separate East-West (server-to-server) and
 
 
 ## Configuration Detail
-<img width="3663" height="4503" alt="image" src="https://github.com/user-attachments/assets/00f17eaa-cc34-43ea-943a-a8c36b8a7bcf" />
+<img width="3663" height="4503" alt="image" src="https://github.com/user-attachments/assets/a318bacf-c4ff-41e3-b31d-5b06179e937f" />
+
 
 ## ⚙️ Key Technical Specifications
 
