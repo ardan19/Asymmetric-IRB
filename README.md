@@ -47,5 +47,5 @@ The physical underlay is structured to separate East-West (server-to-server) and
 * **Route Reflectors:** To ensure scalability, the Spine switches are configured as BGP Route Reflectors, eliminating the need for a full-mesh BGP topology among the Leaves.
 
 ### 4. High Availability & ECMP (All-Active)
-* **Fabric ECMP:** Equal-Cost Multi-Path (ECMP) is fully enabled at the routing layer. Traffic between Leaves is hashed (5-tuple) and distributed evenly across both Spines, ensuring 100% link utilization with no Spanning Tree blocked ports.
+* **Fabric ECMP:** Equal-Cost Multi-Path (ECMP) is fully enabled at the routing layer. Traffic between Leaves and Borders is hashed (5-tuple) and distributed evenly across both Spines, ensuring 100% link utilization with no Spanning Tree blocked ports.
 * **All-Active Edge Multi-Homing:** Compute nodes connect to Leaf pairs using **MLAG** (Multi-Chassis Link Aggregation). Both links actively forward traffic simultaneously, providing maximum throughput and seamless failover.
