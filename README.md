@@ -61,7 +61,8 @@ Host-C and Host-B are in the different Network.
 8. Finally, leaf3 or leaf4 does bridging the packet to physical port connected to the Host-B.
 
 ## Configuration Detail
-<img width="3663" height="4503" alt="image" src="https://github.com/user-attachments/assets/a318bacf-c4ff-41e3-b31d-5b06179e937f" />
+<img width="3666" height="4503" alt="image" src="https://github.com/user-attachments/assets/0fb67f27-d967-4296-aa06-def253cf9a93" />
+
 
 
 ## ⚙️ Key Technical Specifications
