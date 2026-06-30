@@ -1,7 +1,7 @@
 # EVPN-VXLAN Data Center Fabric: Asymmetric IRB Architecture
 
 ## 📖 Overview
-This repository contains the High-Level Design (HLD), architectural decisions, and configuration templates for a modern, highly available Data Center fabric. The network is built on a Spine-Leaf topology utilizing **EVPN-VXLAN** with an **Asymmetric Integrated Routing and Bridging (IRB)** model. 
+This repository contains the High-Level Design (HLD), architectural decisions, and configuration templates for a modern, highly available NVIDIA Spectrum Ethernet fabric. The network is built on a Spine-Leaf topology utilizing **EVPN-VXLAN** with an **Asymmetric Integrated Routing and Bridging (IRB)** model. 
 
 Designed for maximum bandwidth utilization and fault tolerance, this fabric leverages **OSPF Area 0** for a robust underlay and an **All-Active** strategy using MLAG(Multi-Chassis Link Aggregation).
 
@@ -12,7 +12,9 @@ The physical underlay is structured to separate East-West (server-to-server) and
 * **Border Leaf Layer:** 2x Dedicated Border switches (`border1`, `border2`) handling ingress/egress traffic to the external network (`external-sw`).
 
 ## Physical Topology
-<img width="3693" height="3813" alt="image" src="https://github.com/user-attachments/assets/e8a6682d-c7c5-4f59-856a-8e0860f7a191" />
+<img width="3693" height="3813" alt="image" src="https://github.com/user-attachments/assets/506430f2-d49d-4c6d-9011-db299e5146f4" />
+<img width="4056" height="3813" alt="image" src="https://github.com/user-attachments/assets/06b3c8f8-f1c3-4efa-b12c-9dd45057a711" />
+
 
 
 ## Traffic Flow
@@ -61,7 +63,8 @@ Host-C and Host-B are in the different Network.
 8. Finally, leaf3 or leaf4 does bridging the packet to physical port connected to the Host-B.
 
 ## Configuration Detail
-<img width="3666" height="4503" alt="image" src="https://github.com/user-attachments/assets/0fb67f27-d967-4296-aa06-def253cf9a93" />
+<img width="3663" height="4503" alt="image" src="https://github.com/user-attachments/assets/b9da730c-ecdb-4769-8d2a-1f0c996ccbfb" />
+
 
 
 
