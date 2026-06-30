@@ -1,13 +1,13 @@
 # EVPN-VXLAN Data Center Fabric: Asymmetric IRB Architecture
 
 ## 📖 Overview
-This repository contains the High-Level Design (HLD), architectural decisions, and configuration templates for a modern, highly available Data Center fabric. The network is built on a Spine-Leaf (Clos) topology utilizing **EVPN-VXLAN** with an **Asymmetric Integrated Routing and Bridging (IRB)** model. 
+This repository contains the High-Level Design (HLD), architectural decisions, and configuration templates for a modern, highly available Data Center fabric. The network is built on a Spine-Leaf topology utilizing **EVPN-VXLAN** with an **Asymmetric Integrated Routing and Bridging (IRB)** model. 
 
 Designed for maximum bandwidth utilization and fault tolerance, this fabric leverages **OSPF Area 0** for a robust underlay and an **All-Active** strategy using MLAG(Multi-Chassis Link Aggregation).
 
 ## 🏗️ Topology Architecture
 The physical underlay is structured to separate East-West (server-to-server) and North-South (external) traffic, ensuring optimal performance and scalability:
-* **Spine Layer:** 2x Spine switches (`spine1`, `spine2`) acting as the high-speed backplane and iBGP Route Reflectors.
+* **Spine Layer:** 2x Spine switches (`spine1`, `spine2`) acting as the high-speed backplane.
 * **Compute Leaf Layer:** 4x Leaf switches (`leaf1` to `leaf4`, deployed in pairs) providing connectivity to compute endpoints.
 * **Border Leaf Layer:** 2x Dedicated Border switches (`border1`, `border2`) handling ingress/egress traffic to the external network (`external-sw`).
 
