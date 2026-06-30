@@ -18,40 +18,47 @@ The physical underlay is structured to separate East-West (server-to-server) and
 ## Traffic Flow
 ### 1. Traffic Flow Host-A to Host-B
 <img width="3609" height="1986" alt="image" src="https://github.com/user-attachments/assets/3a3e70d8-7c72-4014-808c-26bb88442d6c" />
-* **Workflow**
+**Workflow**
+
+
 Host-A and Host-B are in the different VLAN but are located across different leafs.
-* 1. Host-A makes a LACP hash decision and forwards traffic to leaf1 or leaf2.
-* 2. leaf1 or leaf2 does a layer 2 lookup and has the MAC address for Host-B, leaf1 or leaf2 performs routing from VLAN10 to VLAN20 and found Host B is on the other side of the fabric and associated with L2 VNI 1020.
-* 3. leaf1 or leaf2 performs VXLAN encapsulation packet out VNI1020.
-* 4. leaf1 or leaf2 does hashing based outer 5-tuple using underlay route through spine1->leaf4.
-* 5. leaf3 or leaf4 receive the packet in and performs VXLAN decapsulation packet.
-* 6. leaf3 or leaf4 does not performs any routing and has the MAC address for Host-B.
-* 7. Finally, leaf3 or leaf4 does bridging the packet to physical port connected to the Host-B. 
+1. Host-A makes a LACP hash decision and forwards traffic to leaf1 or leaf2.
+2. leaf1 or leaf2 does a layer 2 lookup and has the MAC address for Host-B, leaf1 or leaf2 performs routing from VLAN10 to VLAN20 and found Host B is on the other side of the fabric and associated with L2 VNI 1020.
+3. leaf1 or leaf2 performs VXLAN encapsulation packet out VNI1020.
+4. leaf1 or leaf2 does hashing based outer 5-tuple using underlay route through spine1->leaf4.
+5. leaf3 or leaf4 receive the packet in and performs VXLAN decapsulation packet.
+6. leaf3 or leaf4 does not performs any routing and has the MAC address for Host-B.
+7. Finally, leaf3 or leaf4 does bridging the packet to physical port connected to the Host-B. 
 
 ### 2. Traffic Flow Host-A to Host-C
 <img width="2151" height="4113" alt="image" src="https://github.com/user-attachments/assets/952b5758-f933-4077-af76-78e8ad5c6002" />
-* **Workflow**
+Workflow:
+
+
 Host-A and Host-C are in the different Network.
-* 1. Host-A makes a LACP hash decision and forwards traffic to leaf1 or leaf2.
-* 2. leaf1 or leaf2 does a layer 3 lookup and has the MAC address for Host-C, leaf1 or leaf2 performs routing and found Host C is on the other side of the Network.
-* 3. leaf1 or leaf2 performs VXLAN encapsulation packet out VNI1010.
-* 4. leaf1 or leaf2 does hashing based outer 5-tuple using underlay route through spine1 or spine2->border1 or border2.
-* 5. border1 or border2 receive the packet in and performs VXLAN decapsulation packet.
-* 6. border1 or border2 transfer the packet out external-sw using OSPF routing protocol. 
-* 6. external-sw does not performs any routing and has the MAC address for Host-B.
-* 7. Finally, external-sw does transfer the packet to physical port connected to the Host-C. 
+1. Host-A makes a LACP hash decision and forwards traffic to leaf1 or leaf2.
+2. leaf1 or leaf2 does a layer 3 lookup and has the MAC address for Host-C, leaf1 or leaf2 performs routing and found Host C is on the other side of the Network.
+3. leaf1 or leaf2 performs VXLAN encapsulation packet out VNI1010.
+4. leaf1 or leaf2 does hashing based outer 5-tuple using underlay route through spine1 or spine2->border1 or border2.
+5. border1 or border2 receive the packet in and performs VXLAN decapsulation packet.
+6. border1 or border2 transfer the packet out external-sw using OSPF routing protocol. 
+7. external-sw does not performs any routing and has the MAC address for Host-B.
+8. Finally, external-sw does transfer the packet to physical port connected to the Host-C. 
 
 ### 3. Traffic Flow Host-C to Host-B
 <img width="2139" height="4053" alt="image" src="https://github.com/user-attachments/assets/6d9e555b-bc2c-474a-97b3-c324159eaec4" />
-* **Workflow**
+Workflow:
+
+
 Host-C and Host-B are in the different Network.
-* 1. Host-C transfer packet to external-sw.
-* 2. external-sw does a layer 3 lookup and has the MAC address for Host-B on the other side of the Network.
-* 3. external-sw does hashing based outer 5-tuple using underlay route through border1 or border2.
-* 4. packet arrive in border1 or border2 and found the host-C is on the side of leaf3 and leaf4 fabric and associated with L2 VNI1020.
-* 5. border1 or border2 performs VXLAN encapsulation packet and forward the packet through spine2 and spine2 makes a LACP hash decision and forwards traffic to leaf3 or leaf4.
-* 6. leaf3 or leaf4 receive the packet in and performs VXLAN decapsulation packet.
-* 7. Finally, leaf3 or leaf4 does bridging the packet to physical port connected to the Host-B.
+1. Host-C transfer packet to external-sw.
+2. external-sw does a layer 3 lookup and has the MAC address for Host-B on the other side of the Network.
+3. external-sw does hashing based outer 5-tuple using underlay route through border1 or border2.
+4. packet arrive in border1 or border2 and found the host-C is on the side of leaf3 and leaf4 fabric and associated with L2 VNI1020.
+5. border1 or border2 performs VXLAN encapsulation packet and forward the packet through spine2.
+6. spine2 makes a LACP hash decision and forwards traffic to leaf3 or leaf4.
+7. leaf3 or leaf4 receive the packet in and performs VXLAN decapsulation packet.
+8. Finally, leaf3 or leaf4 does bridging the packet to physical port connected to the Host-B.
 
 ## Configuration Detail
 <img width="3663" height="4503" alt="image" src="https://github.com/user-attachments/assets/a318bacf-c4ff-41e3-b31d-5b06179e937f" />
