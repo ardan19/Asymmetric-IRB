@@ -78,7 +78,6 @@ Host-C and Host-B are in the different Network.
 
 ### 3. Overlay Network: MP-BGP EVPN
 * **Control Plane:** eBGP is utilized for the EVPN control plane to efficiently distribute MAC and IP reachability information across the fabric.
-* **Route Reflectors:** To ensure scalability, the Spine switches are configured as BGP Route Reflectors, eliminating the need for a full-mesh BGP topology among the Leaves.
 
 ### 4. High Availability & ECMP (All-Active)
 * **Fabric ECMP:** Equal-Cost Multi-Path (ECMP) is fully enabled at the routing layer. Traffic between Leaves and Borders is hashed (5-tuple) and distributed evenly across both Spines, ensuring 100% link utilization with no Spanning Tree blocked ports.
