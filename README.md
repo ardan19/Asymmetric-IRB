@@ -81,4 +81,4 @@ Host-C and Host-B are in the different Network.
 
 ### 4. High Availability & ECMP (All-Active)
 * **Fabric ECMP:** Equal-Cost Multi-Path (ECMP) is fully enabled at the routing layer. Traffic between Leaves and Borders is hashed (5-tuple) and distributed evenly across both Spines, ensuring 100% link utilization with no Spanning Tree blocked ports.
-* **All-Active Edge Multi-Homing:** Compute nodes connect to Leaf pairs using **MLAG** (Multi-Chassis Link Aggregation). Both links actively forward traffic simultaneously, providing maximum throughput and seamless failover.
+* **All-Active Edge:** Compute nodes connect to Leaf pairs using **MLAG** (Multi-Chassis Link Aggregation). Both links actively forward traffic simultaneously, providing maximum throughput and seamless failover.
