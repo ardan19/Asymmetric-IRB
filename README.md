@@ -3,7 +3,7 @@
 ## 📖 Overview
 This repository contains the High-Level Design (HLD), architectural decisions, and configuration templates for a modern, highly available Data Center fabric. The network is built on a Spine-Leaf (Clos) topology utilizing **EVPN-VXLAN** with an **Asymmetric Integrated Routing and Bridging (IRB)** model. 
 
-Designed for maximum bandwidth utilization and fault tolerance, this fabric leverages **OSPF Area 0** for a robust underlay and an **All-Active** multi-homing strategy using EVPN ESI-LAG.
+Designed for maximum bandwidth utilization and fault tolerance, this fabric leverages **OSPF Area 0** for a robust underlay and an **All-Active** strategy using MLAG(Multi-Chassis Link Aggregation).
 
 ## 🏗️ Topology Architecture
 The physical underlay is structured to separate East-West (server-to-server) and North-South (external) traffic, ensuring optimal performance and scalability:
@@ -69,7 +69,7 @@ Host-C and Host-B are in the different Network.
 * **BFD Integration:** Bidirectional Forwarding Detection (BFD) is tied to OSPF for sub-second link failure detection.
 
 ### 3. Overlay Network: MP-BGP EVPN
-* **Control Plane:** iBGP is utilized for the EVPN control plane to efficiently distribute MAC and IP reachability information across the fabric.
+* **Control Plane:** eBGP is utilized for the EVPN control plane to efficiently distribute MAC and IP reachability information across the fabric.
 * **Route Reflectors:** To ensure scalability, the Spine switches are configured as BGP Route Reflectors, eliminating the need for a full-mesh BGP topology among the Leaves.
 
 ### 4. High Availability & ECMP (All-Active)
